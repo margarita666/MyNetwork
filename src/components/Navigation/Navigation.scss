@@ -1,0 +1,14 @@
+.navigation{
+  &__menu{
+    .item{
+      font-size: 18px;
+      padding: 7px 0;
+    }
+    a{
+      color: #00008B;
+    }
+    a.active{
+      color:#FFFAF0;
+    }
+  }
+}
