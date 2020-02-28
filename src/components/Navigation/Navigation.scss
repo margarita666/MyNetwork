@@ -11,4 +11,13 @@
       color:#FFFAF0;
     }
   }
+  .friends{
+  margin: 0 15px 10px;
+    p{
+      text-align: center;
+    }
+    &__wrap{
+      display: flex;
+    }   
+  }
 }

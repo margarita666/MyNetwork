@@ -9,14 +9,15 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings'
 
-function App() {
+function App({state, addPost}) {
   return (
     <div className="app-wrapper"> 
     <Header />  
-    <Navbar />
+    <Navbar state={state.navbar}/>
       <div className="content">
-      <Route component={Profile} path="/profile"/>
-        <Route component={Dialogs} path="/dialogs"/>
+        <Route render={() => <Profile state={state.profilePage} 
+                                      addPost={addPost}/>} path="/profile"/>
+        <Route render={() => <Dialogs state={state.dialogsPage}/>} path="/dialogs"/>
         <Route component={News} path="/news"/>
         <Route component={Music} path="/music"/>
         <Route component={Settings} path="/settings"/>

@@ -2,4 +2,27 @@
   display: grid;
   padding: 10px 15px;
   grid-template-columns: 2fr 10fr;
+  grid-template-areas:
+  "d m"
+  "d s";
+  &__wrap{
+    grid-area: d;
+    border-right: 1px solid gray;
+  }
+  .messages{
+    grid-area: m;
+    padding: 0 20px;
+  }
+
+  .send{
+    grid-area: s;
+    margin: 20px;
+    display: flex;
+    button{
+      padding: 10px 15px;
+      background-color: darkslategray;
+      border: none;
+      color: #fff;
+    }
+  }
 }

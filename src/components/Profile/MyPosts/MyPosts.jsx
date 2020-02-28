@@ -3,25 +3,31 @@ import Post from './Post/Post';
 import './MyPosts.scss'
 
 
-const MyPosts = () => {
 
-  let postsData = [
-    {id: 1, text:`Hi, how are you?`, like:11},
-    {id: 2, text:`It's my firs post`, like:7}
-  ]
+const MyPosts = ({posts, addPost}) => {
+  let postsElements = 
+  posts.map((el)=>{return <Post message={el.text} like={el.like}/> });
+
+  let myRef = React.createRef();
+
+  let addPosts=() => {
+    debugger;
+    let text = myRef.current.value;
+    addPost(text)
+  }
   return (
     <div className="posts">
       <h3>My Posts</h3>
-      <div className="add-post">
-        <textarea></textarea>
-        <button>Add post</button>
+      <div className="post-form">
+        <textarea ref={myRef} className="post-field"></textarea>
+        <button onClick={addPosts} className="post-btn">Add post</button>
       </div>
       <div>
-        <Post message={postsData[0].text} like={postsData[0].like}/>
-        <Post message={postsData[1].text} like={postsData[1].like}/>
+        {postsElements}
       </div>
     </div>
   );
+  
 }
 
 export default MyPosts;
