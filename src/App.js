@@ -9,15 +9,20 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings'
 
-function App({state, addPost}) {
+function App({state, addPost, updatePost, sendMessage,updateMessage}) {
   return (
     <div className="app-wrapper"> 
     <Header />  
     <Navbar state={state.navbar}/>
       <div className="content">
-        <Route render={() => <Profile state={state.profilePage} 
-                                      addPost={addPost}/>} path="/profile"/>
-        <Route render={() => <Dialogs state={state.dialogsPage}/>} path="/dialogs"/>
+        <Route render={() => <Profile profileState={state.profilePage} 
+                                      addPost={addPost}
+                                      updatePost={updatePost}/>} 
+                              path="/profile"/>
+        <Route render={() => <Dialogs 
+                                      state={state.dialogsPage}
+                                      sendMessage={sendMessage}
+                                      updateMessage={updateMessage}/>} path="/dialogs"/>
         <Route component={News} path="/news"/>
         <Route component={Music} path="/music"/>
         <Route component={Settings} path="/settings"/>

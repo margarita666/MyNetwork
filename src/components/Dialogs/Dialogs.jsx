@@ -4,7 +4,7 @@ import './Dialogs.scss'
 import MessageItem from './MessagesItem/MessageItem';
 import DialogItem from './DialogItems/DialogItem';
 
-const Dialogs = ({ state }) => {
+const Dialogs = ({ state, sendMessage, updateMessage }) => {
 
   let dialogsElements = state.dialogs.map((el) => {
     return <DialogItem name={el.name} id={el.id}></DialogItem>
@@ -16,10 +16,15 @@ const Dialogs = ({ state }) => {
 
   let newMessage = React.createRef();
 
-  let sendMessage = () => {
-    let text = newMessage.current.value;
-    alert(text);
+  let sendMessages = () => {
+     sendMessage();
   }
+
+  let onMessageChange = () => {
+    let text = newMessage.current.value;
+    updateMessage(text);
+  }
+
   return (
     <div className="dialogs">
       <div className="dialogs__wrap">
@@ -30,8 +35,8 @@ const Dialogs = ({ state }) => {
         {messagesElements}
       </div>
       <div className="send">
-        <textarea ref={newMessage} rows="3" cols="30"></textarea>
-        <button onClick={sendMessage}>Send</button>
+        <textarea ref={newMessage} onChange={onMessageChange} value={state.newMessage} rows="3" cols="30"></textarea>
+        <button onClick={sendMessages}>Send</button>
       </div>
 
     </div>
