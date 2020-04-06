@@ -1,23 +1,18 @@
 import React from 'react';
 import Post from './Post/Post';
 import './MyPosts.scss'
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/profile-reducer.js';
 
-
-
-const MyPosts = ({posts, dispatch, newPostText}) => {
+const MyPosts = ({addPost, updateNewPostText, posts, newPostText}) => {
   let postsElements = 
-  posts.map((el)=>{return <Post message={el.text} like={el.like}/> });
+  posts.map((el)=>{return <Post message={el.text} like={el.like} key={el.id}/> });
 
   let addPosts=() => {
-    let action = addPostActionCreator();
-    dispatch(action);
+    addPost()  
   }
 
   let onPostChange = (e) =>{
     let text = e.target.value;
-    let action = updateNewPostTextActionCreator(text)
-    dispatch(action);
+    updateNewPostText(text)
   }
 
   return (

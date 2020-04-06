@@ -1,26 +1,26 @@
 import React from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
-import Navbar from './components/Navigation/Navigation';
 import Profile from './components/Profile/Profile';
 import { Route } from 'react-router-dom';
-import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings'
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import NavbarContainer from './components/Navigation/NavigationContainer';
+import UsersContainer from './components/Users/UsersContainer'
 
-function App({state, dispatch}) {
+function App() {
   return (
     <div className="app-wrapper"> 
     <Header />  
-    <Navbar state={state.navbar}/>
+    <NavbarContainer />
       <div className="content">
-        <Route render={() => <Profile profileState={state.profilePage} 
-                                      dispatch={dispatch}/>} 
+        <Route render={() => <Profile />} 
                               path="/profile"/>
-        <Route render={() => <Dialogs 
-                                      state={state.dialogsPage}
-                                      dispatch={dispatch}/>} path="/dialogs"/>
+        <Route render={() => <DialogsContainer />} 
+                              path="/dialogs"/>
+        <Route render={() => <UsersContainer />} path="/users" />
         <Route component={News} path="/news"/>
         <Route component={Music} path="/music"/>
         <Route component={Settings} path="/settings"/>

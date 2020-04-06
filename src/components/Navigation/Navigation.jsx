@@ -4,7 +4,7 @@ import './Navigation.scss'
 import Friends from '../Friends/Friends';
 
 const Navbar = ({state}) => {
-  let friendElement = state.friends.map((el) => <Friends name={el.name} />)
+  let friendElement = state.friends.map((el) => <Friends name={el.name} key={el.id}/>)
   return (
     <nav className="navigation">
       <ul className="navigation__menu">

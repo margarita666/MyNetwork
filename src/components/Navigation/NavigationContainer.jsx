@@ -1,0 +1,48 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Navigation.scss'
+import Friends from '../Friends/Friends';
+import Navbar from './Navigation';
+import { connect } from 'react-redux';
+
+// const Navbar = ({state}) => {
+//   let friendElement = state.friends.map((el) => <Friends name={el.name} />)
+//   return (
+//     <nav className="navigation">
+//       <ul className="navigation__menu">
+//         <li className="item">
+//           <NavLink to="/profile">Profile</NavLink>
+//         </li>
+//         <li className="item">
+//           <NavLink to="/dialogs">Messages</NavLink>
+//         </li>
+//         <li className="item">
+//           <NavLink to="/news">News</NavLink>
+//         </li>
+//         <li className="item">
+//           <NavLink to="/music">Music</NavLink>
+//         </li>
+//         <li className="item">
+//           <NavLink to="/settings">Settings</NavLink>
+//         </li>
+//       </ul>
+
+//       <div className="friends">
+//         <p>Friends</p>
+//         <div className="friends__wrap">
+//           {friendElement}
+//         </div>
+        
+//       </div>
+//     </nav>
+//   );
+// }
+
+let mapStateToPrors = (state) => {
+  return {
+    state: state.navbar,
+  }
+}
+const NavbarContainer = connect(mapStateToPrors) (Navbar);
+
+export default NavbarContainer;
